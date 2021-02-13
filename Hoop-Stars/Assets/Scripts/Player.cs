@@ -17,18 +17,20 @@ public class Player : MonoBehaviour
         _body = GetComponent<Rigidbody>();
     }
 
-    public void AddForce(Direction direction) {
+    public void Jump(Direction direction) {
 
         float factor = (direction == Direction.LEFT)? -1:1;      
         Vector3 targetLocation = new Vector3(transform.position.x + addend.x * factor, transform.position.y + addend.y, transform.position.z);
 
-        _body.DOJump(targetLocation, _jumpPower, _jumpsNumber, duration, false);
-    
+        //_body.DOJump(targetLocation, _jumpPower, _jumpsNumber, duration, false);
+
+        _body.AddForce(new Vector3(factor, 1) * _jumpPower, ForceMode.Impulse);
+
    
     }
 
 
-    private void FixedUpdate()
+    private void Update()
     {
         
         

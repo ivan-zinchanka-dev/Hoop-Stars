@@ -12,14 +12,14 @@ public class Ecran : MonoBehaviour
         if (tapPosition.x > 0.0f)
         {
 
-            _agent.AddForce(Direction.LEFT);
+            _agent.Jump(Direction.LEFT);
             
             //Debug.Log(tapPosition);
             Debug.Log("Left");
         }
         else {
 
-            _agent.AddForce(Direction.RIGHT);
+            _agent.Jump(Direction.RIGHT);
 
             //Debug.Log(tapPosition);
             Debug.Log("Right");
