@@ -1,7 +1,10 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class Trigger : MonoBehaviour
 {
+
+    public static event Action Goal;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -9,10 +12,16 @@ public class Trigger : MonoBehaviour
 
         if (ball = other.GetComponent<BallBehaviour>()) {
 
-            if (ball.IsDestructible) {
+            if (Goal != null) {
 
-                Destroy(ball.gameObject, 0.25f); 
+                Goal.Invoke();            
             }
+
+
+            //if (ball.IsDestructible) {
+
+            //    Destroy(ball.gameObject, 0.25f); 
+            //}
 
             Debug.Log("GOAL!");        
         }
