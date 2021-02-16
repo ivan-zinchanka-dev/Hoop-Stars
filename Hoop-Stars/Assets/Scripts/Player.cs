@@ -1,47 +1,23 @@
 ﻿using UnityEngine;
-using DG.Tweening;
 
-
-public class Player : MonoBehaviour
+public class Player : TorusBehaviour
 {
-    private Rigidbody _body;
-    [SerializeField] private float _jumpPower = 1.0f;
-    [SerializeField] private int _jumpsNumber = 1;
-    [SerializeField] private float duration = 1.0f;
-    [SerializeField] private Vector2 addend = new Vector2(0.0f, 0.0f);
 
-    
+    private Renderer render;
 
-    private void Awake()
+    private void Start()
     {
-        _body = GetComponent<Rigidbody>();
+        //render = GetComponentInChildren<Renderer>();
+        //render.material.color = Color.blue;
     }
+
 
     public void Jump(Direction direction) {
 
-        float factor = (direction == Direction.LEFT)? -1:1;      
-        Vector3 targetLocation = new Vector3(transform.position.x + addend.x * factor, transform.position.y + addend.y, transform.position.z);
-
-        //_body.DOJump(targetLocation, _jumpPower, _jumpsNumber, duration, false);
-
-        _body.AddForce(new Vector3(factor, 1) * _jumpPower, ForceMode.Impulse);
-
-   
+        float factor = (direction == Direction.LEFT)? -1:1;
+        _body.velocity = Vector3.zero;
+        _body.AddForce(new Vector3(factor, 1, 0) * _jumpPower, ForceMode.Impulse); 
     }
-
-
-    private void Update()
-    {
-        
-        
-
-
-    }
-
 
 }
 
-public enum Direction : byte
-{
-    LEFT, RIGHT
-}

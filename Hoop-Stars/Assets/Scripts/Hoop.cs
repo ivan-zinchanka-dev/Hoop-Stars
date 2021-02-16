@@ -1,10 +1,22 @@
 ﻿using System;
 using UnityEngine;
 
-public class Trigger : MonoBehaviour
+public class Hoop : MonoBehaviour
 {
-
+    private BoxCollider _collider;
     public static event Action Goal;
+
+    private void Awake()
+    {
+        Goal = null;
+    }
+
+    private void Start()
+    {
+        _collider = GetComponent<BoxCollider>();
+        GameManager.StopSession += delegate () { _collider.enabled = false; };
+
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -15,18 +27,8 @@ public class Trigger : MonoBehaviour
             if (Goal != null) {
 
                 Goal.Invoke();            
-            }
-
-
-            //if (ball.IsDestructible) {
-
-            //    Destroy(ball.gameObject, 0.25f); 
-            //}
-
-            Debug.Log("GOAL!");        
+            }     
         }
-
-
     }
 
 
