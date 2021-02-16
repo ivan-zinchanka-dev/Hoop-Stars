@@ -10,7 +10,6 @@ public class CameraShakes : MonoBehaviour
     {
         Hoop.Goal += delegate ()
         {
-
             transform.DOShakePosition(_duration, Vector3.up * _force, 0, 0, false, false);
         };
     }

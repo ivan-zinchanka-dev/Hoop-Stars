@@ -2,8 +2,6 @@
 
 public class MenuManager : MonoBehaviour
 {
-    //public Material[] materials;
-
     public static LevelType LevelMode { get; private set;}
     public static Skin BallSkin { get; private set; } = Skin.YELLOW;
     public static Skin HoopSkin { get; private set; } = Skin.PURPLE;
@@ -11,26 +9,30 @@ public class MenuManager : MonoBehaviour
     public void LoadFirstLevel() {
 
         LevelMode = LevelType.INDESTRUCTIBLE_BALLS;
-        Application.LoadLevel(1); 
+        Application.LoadLevel(2); 
     }
 
     public void LoadSecondLevel()
     {
         LevelMode = LevelType.DESTRUCTIBLE_BALLS;
-        Application.LoadLevel(1);
+        Application.LoadLevel(2);
     }
 
     public void LoadBonusLevel()
     {
-        LevelMode = LevelType.DESTRUCTIBLE_BALLS;
-        Application.LoadLevel(2);
+        LevelMode = LevelType.BONUS;
+        Application.LoadLevel(3);
     }
 
-    public void SetSkin(int skin) {
+    public void SetHoopSkin(int skin) {
 
         HoopSkin = (Skin)skin;    
     }
 
+    public void SetBallSkin(int skin) {
+
+        BallSkin = (Skin)skin;
+    }
 
 }
 
@@ -41,6 +43,6 @@ public enum Skin : byte {
 
 public enum LevelType : byte {
 
-    DESTRUCTIBLE_BALLS, INDESTRUCTIBLE_BALLS
+    DESTRUCTIBLE_BALLS, INDESTRUCTIBLE_BALLS, BONUS
 }
 

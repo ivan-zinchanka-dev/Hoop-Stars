@@ -2,15 +2,20 @@
 
 public class SkinManager : MonoBehaviour
 {
+    [SerializeField] private TorusBehaviour _player;
+    [SerializeField] private BallBehaviour _ball;
+    [SerializeField] private Material _topaz;
+    [SerializeField] private Material[] _skins;
 
-    [SerializeField] private TorusBehaviour player;
-    [SerializeField] private Material[] skins;
-    private Material selectedMaterial;
+    public static Material selectedBallMaterial; 
 
     private void Start()
     {
-        selectedMaterial = skins[(int)MenuManager.HoopSkin];
-        player.GetComponentInChildren<Renderer>().material = selectedMaterial;
+        Material selectedTorusMaterial = _skins[(int)MenuManager.HoopSkin];
+        _player.GetComponentInChildren<Renderer>().material = selectedTorusMaterial;
+
+        selectedBallMaterial = (MenuManager.LevelMode == LevelType.BONUS) ? _topaz : _skins[(int)MenuManager.BallSkin];
+        _ball.GetComponentInChildren<Renderer>().material = selectedBallMaterial;
     }
 
 

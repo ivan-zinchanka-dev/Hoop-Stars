@@ -20,19 +20,6 @@ public class GameManager : MonoBehaviour
     private float _currentTime;                             // time in seconds
     public static event Action StopSession;
 
-    public int TargetScore
-    {
-        get
-        {
-            return _targetScore;
-        }
-
-        private set
-        {
-            _targetScore = value;
-        }
-    }
-
     private string ViewTime(float time)
     {
         float minutes = 0.0f, seconds = time;
@@ -52,7 +39,7 @@ public class GameManager : MonoBehaviour
 
         if (MenuManager.LevelMode == LevelType.INDESTRUCTIBLE_BALLS) {
 
-            FindObjectOfType<BallsMap>().GetComponent<BallsMap>().enabled = false;        
+            FindObjectOfType<BallsManager>().GetComponent<BallsManager>().enabled = false;        
         }
 
         _playerScore = 0;
@@ -95,9 +82,8 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(_slowingDuration);
         
         Time.timeScale = originalTimeScale;
-        Application.LoadLevel(0);
+        Application.LoadLevel(1);
     }
-
 
     private void Update()
     {
@@ -105,7 +91,8 @@ public class GameManager : MonoBehaviour
         if (_leftTime <= 0) {
 
             if (!_exitFromSession) {
-              
+
+                _timerText.text = ViewTime(_leftTime);
                 StartCoroutine(EndOfSession());
                 StopSession();
                 _exitFromSession = true;

@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
 
-public class BallsMap : MonoBehaviour
+public class BallsManager : MonoBehaviour
 {
-    [SerializeField] private BallBehaviour _ball;
-    [SerializeField] private Vector2 OldBallPosition = new Vector2(0,0);  
+    [SerializeField] private Vector2 OldBallPosition = new Vector2(0,0);
+    [SerializeField] private FloatingObject _ball;
+    private ObjectsPool _ballsPool;
 
     private void Start()
     {
+        _ballsPool = new ObjectsPool(1, _ball);
+
         Hoop.Goal += delegate (){
             
             Vector2 NewBallPosition = new Vector2(Random.Range(-15, 15), Random.Range(-10, 18));
@@ -15,8 +18,10 @@ public class BallsMap : MonoBehaviour
 
                 NewBallPosition = new Vector2(Random.Range(-15, 15), Random.Range(-10, 18));
             }
-            
-            _ball.SetBall(NewBallPosition);
+
+            _ball.ReturnToPool();
+            _ball = _ballsPool.GetObject();
+            _ball.GetComponent<BallBehaviour>().SetBall(NewBallPosition);
             OldBallPosition = NewBallPosition;
         };
     }

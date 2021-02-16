@@ -18,7 +18,7 @@ public class Hoop : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerExit(Collider other)
     {
         BallBehaviour ball;
 

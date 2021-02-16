@@ -1242,6 +1242,7 @@ GameObject:
   - component: {fileID: 1355022495}
   - component: {fileID: 1355022494}
   - component: {fileID: 1355022493}
+  - component: {fileID: 1355022496}
   m_Layer: 0
   m_Name: Scene Manager
   m_TagString: Untagged
@@ -1261,8 +1262,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd51377dd6478f948ad9330003123dcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ball: {fileID: 2029881955}
   OldBallPosition: {x: 0, y: 0}
+  _ball: {fileID: 2029881960}
 --- !u!114 &1355022494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1275,7 +1276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9905649cbeb7074a9cadd47a6f8959c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetScore: 6
+  _targetScore: 1000
   _ballPrice: 10
   _slowingValue: 0.5
   _slowingDuration: 1
@@ -1298,6 +1299,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1355022496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1355022492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37a4783ba783ad24885548148e2cc0af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 938661448}
+  _ball: {fileID: 2029881955}
+  _topaz: {fileID: 2100000, guid: 438dad7e66b05b547964b1f6b488f868, type: 2}
+  _skins:
+  - {fileID: 2100000, guid: 9a269474edf66cc4b94d740d03532d2e, type: 2}
+  - {fileID: 2100000, guid: 3111b879300eb4e4ebf2ed1e8c990627, type: 2}
+  - {fileID: 2100000, guid: a76bc8322784ed74ea32d62e5370307b, type: 2}
 --- !u!1 &1413627799
 GameObject:
   m_ObjectHideFlags: 0
@@ -1742,7 +1762,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 1
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -28.133127, w: 0}
+  m_margin: {x: 0, y: 0, z: -145.78236, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1761,6 +1781,7 @@ GameObject:
   - component: {fileID: 2029881957}
   - component: {fileID: 2029881956}
   - component: {fileID: 2029881955}
+  - component: {fileID: 2029881960}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Ball
@@ -1854,6 +1875,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2029881960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2029881954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04aa8242d77fff449bfb4faa7a0bb321, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2083116212
 GameObject:
   m_ObjectHideFlags: 0
